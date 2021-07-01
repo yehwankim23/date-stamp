@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+  background-color: #f2f2f6;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 4vmin;
+  line-height: 1.25;
+  touch-action: manipulation;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+label,
+input,
+button {
+  border-radius: 2.5vmin;
+  height: 10vmin;
+  cursor: pointer;
+}
+
+label,
+input {
+  background-color: white;
+  color: black;
+}
+
+label,
+button {
+  width: 20vmin;
+}
+
+input,
+button {
+  border: none;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 4vmin;
+  line-height: 1.25;
+}
+
+label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  width: 30vmin;
+  text-align: center;
+}
+
+input::-webkit-calendar-picker-indicator {
+  width: 5vmin;
+}
+
+button {
+  background-color: #3478f6;
+  font-weight: normal;
+  color: white;
+}
+
+a {
+  font-size: 2vmin;
+  color: #888;
+  text-decoration: none;
+}
+
+.d-n {
+  display: none;
+}
+
+.m-a {
+  margin: auto;
+}
+
+.mt-10 {
+  margin-top: 10vmin;
+}
+
+.mb-20 {
+  margin-bottom: 20vmin;
+}
+
+.w-10 {
+  width: 10vmin;
+}
+
+.w-35 {
+  width: 35vmin;
+}
+
+.w-80 {
+  width: 80vmin;
+}
+
+.fs-8 {
+  font-size: 8vmin;
+}
+
+.fd-c {
+  flex-direction: column;
+}
+
+.jc-sb {
+  justify-content: space-between;
+}

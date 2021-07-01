@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date Stamp</title>
+    <link rel="icon" href="images/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="scripts/script.bundle.js" defer></script>
+  </head>
+  <body>
+    <div class="m-a mb-20 w-80 fd-c">
+      <div class="mt-10 fs-8">Date Stamp</div>
+      <div class="mt-10" style="height: 35vmin">
+        <img class="w-35" src="images/preview-before.png" alt="미리 보기 (전)" />
+        <div class="w-10">→</div>
+        <img class="w-35" src="images/preview-after.png" alt="미리 보기 (후)" />
+      </div>
+      <form>
+        <div class="mt-10 w-80 jc-sb">
+          <label for="image">사진</label>
+          <input id="image" class="d-n" type="file" accept="image/*" />
+          <input id="date" type="date" />
+          <button type="submit">완료</button>
+        </div>
+      </form>
+      <div class="mt-10">
+        <img id="result" class="w-80" />
+      </div>
+      <div class="mt-10">
+        <a href="https://github.com/yehwankim23/date-stamp" target="_blank">
+          &copy; 2021-2023 김예환 Ye-Hwan Kim (Sam)
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
