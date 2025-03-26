@@ -1,16 +1,16 @@
 import { initializeApp } from "firebase/app";
+import axios from "axios";
 import { getAnalytics } from "firebase/analytics";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 
-const firebaseApp = initializeApp({
-  apiKey: "AIzaSyBENZc0AAbo6Wj3qHFItSSwh_gZz849bsY",
-  authDomain: "date-stamp.firebaseapp.com",
-  projectId: "date-stamp",
-  storageBucket: "date-stamp.appspot.com",
-  messagingSenderId: "180467037749",
-  appId: "1:180467037749:web:53d146fdc042c5bc7c637c",
-  measurementId: "G-TXFHXKFXBN",
-});
+const firebaseApp = initializeApp(
+  (
+    await axios({
+      method: "get",
+      url: "https://tokens.yehwan.kim/tokens",
+    })
+  ).data
+);
 
 const analytics = getAnalytics(firebaseApp);
 const storage = getStorage(firebaseApp);
