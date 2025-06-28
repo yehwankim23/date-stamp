@@ -3,13 +3,13 @@ import { getAnalytics } from "firebase/analytics";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 const firebaseApp = initializeApp({
-  apiKey: "AIzaSyBENZc0AAbo6Wj3qHFItSSwh_gZz849bsY",
+  apiKey: "AIzaSyBT101qdjEzTSmpTeDFgChsudgK6B82ZTs",
   authDomain: "date-stamp.firebaseapp.com",
   projectId: "date-stamp",
   storageBucket: "date-stamp.appspot.com",
   messagingSenderId: "180467037749",
-  appId: "1:180467037749:web:53d146fdc042c5bc7c637c",
-  measurementId: "G-TXFHXKFXBN",
+  appId: "1:180467037749:web:9a8390c04a49f9bd7c637c",
+  measurementId: "G-5JKK53JRWZ",
 });
 
 const analytics = getAnalytics(firebaseApp);
