@@ -2,7 +2,7 @@
   "name": "date-stamp",
   "version": "1.0.0",
   "dependencies": {
-    "firebase": "latest"
+    "axios": "latest"
   },
   "devDependencies": {
     "webpack": "latest",

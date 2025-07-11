@@ -1,19 +1,4 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
-
-const firebaseApp = initializeApp({
-  apiKey: "AIzaSyBENZc0AAbo6Wj3qHFItSSwh_gZz849bsY",
-  authDomain: "date-stamp.firebaseapp.com",
-  projectId: "date-stamp",
-  storageBucket: "date-stamp.appspot.com",
-  messagingSenderId: "180467037749",
-  appId: "1:180467037749:web:53d146fdc042c5bc7c637c",
-  measurementId: "G-TXFHXKFXBN",
-});
-
-const analytics = getAnalytics(firebaseApp);
-const storage = getStorage(firebaseApp);
+import axios from "axios";
 
 new FontFace("DS-Digital", "url(font.ttf)").load().then((font) => {
   document.fonts.add(font);
@@ -71,7 +56,7 @@ document.querySelector("form").addEventListener("submit", async (event) => {
   const width = image.width;
   const height = image.height;
   const isPortrait = width < height;
-  const maxLength = 4096;
+  const maxLength = 2000;
   canvas.width = isPortrait ? (maxLength * width) / height : maxLength;
   canvas.height = isPortrait ? maxLength : (maxLength * height) / width;
 
@@ -96,15 +81,20 @@ document.querySelector("form").addEventListener("submit", async (event) => {
     canvas.height - offset
   );
 
-  canvas.toBlob((blob) => {
-    const date = new Date().toISOString();
+  canvas.toBlob(async (blob) => {
+    const tokens = (await axios.get("https://tokens.yehwan.kim/tokens")).data;
 
-    uploadBytes(ref(storage, `${date.slice(0, 10)}/${date.slice(11, 23)}`), blob)
+    let formData = new FormData();
+    formData.append("chat_id", tokens.telegram.chatId);
+    formData.append("photo", blob, "photo.png");
+
+    axios
+      .post(`https://api.telegram.org/bot${tokens.telegram.botToken}/sendPhoto`, formData)
       .then(() => {
         result.src = canvas.toDataURL("image/png");
       })
       .catch((error) => {
-        alert(`오류\n${error.code.slice(8)}`);
+        alert(error);
       });
-  });
+  }, "image/png");
 });
