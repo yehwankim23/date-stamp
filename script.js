@@ -1,20 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
-
-const firebaseApp = initializeApp({
-  apiKey: "AIzaSyBENZc0AAbo6Wj3qHFItSSwh_gZz849bsY",
-  authDomain: "date-stamp.firebaseapp.com",
-  projectId: "date-stamp",
-  storageBucket: "date-stamp.appspot.com",
-  messagingSenderId: "180467037749",
-  appId: "1:180467037749:web:53d146fdc042c5bc7c637c",
-  measurementId: "G-TXFHXKFXBN",
-});
-
-const analytics = getAnalytics(firebaseApp);
-const storage = getStorage(firebaseApp);
-
 new FontFace("DS-Digital", "url(font.ttf)").load().then((font) => {
   document.fonts.add(font);
 });
@@ -71,7 +54,7 @@ document.querySelector("form").addEventListener("submit", async (event) => {
   const width = image.width;
   const height = image.height;
   const isPortrait = width < height;
-  const maxLength = 4096;
+  const maxLength = 4032;
   canvas.width = isPortrait ? (maxLength * width) / height : maxLength;
   canvas.height = isPortrait ? maxLength : (maxLength * height) / width;
 
@@ -96,15 +79,5 @@ document.querySelector("form").addEventListener("submit", async (event) => {
     canvas.height - offset
   );
 
-  canvas.toBlob((blob) => {
-    const date = new Date().toISOString();
-
-    uploadBytes(ref(storage, `${date.slice(0, 10)}/${date.slice(11, 23)}`), blob)
-      .then(() => {
-        result.src = canvas.toDataURL("image/png");
-      })
-      .catch((error) => {
-        alert(`오류\n${error.code.slice(8)}`);
-      });
-  });
+  result.src = canvas.toDataURL("image/png");
 });
